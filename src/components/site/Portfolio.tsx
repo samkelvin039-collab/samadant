@@ -76,7 +76,7 @@ const CONCEPTS: ConceptItem[] = [
     title: "Launch promotional graphic",
     category: "Social",
     description: "An announcement graphic template ready for your title, cover and date.",
-    span: "",
+    span: "lg:col-span-2",
     render: () => <PromoGraphicConcept />,
   },
 ];
@@ -89,10 +89,10 @@ function ListopiaConcept() {
     { w: "w-1/2", rank: 4 },
   ];
   return (
-    <div className="flex size-full flex-col justify-center gap-3 bg-secondary p-7" aria-label="Concept: an illustrated reader list with one highlighted book">
+    <div className="flex size-full flex-col justify-center gap-3 bg-secondary px-7 pt-14 pb-6" aria-label="Concept: an illustrated reader list with one highlighted book">
       <p className="eyebrow">Best atmospheric mysteries</p>
       <p className="text-xs text-muted-foreground">Illustrative reader-curated list</p>
-      <ul className="mt-2 space-y-2.5">
+      <ul className="mt-1 space-y-2">
         {rows.map((r) => (
           <li
             key={r.rank}
@@ -169,22 +169,24 @@ export function Portfolio() {
           ))}
         </div>
 
-        <ul className="mt-10 grid auto-rows-[20rem] gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="mt-10 grid auto-rows-[26rem] gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {items.map((item) => (
             <li
               key={item.id}
               className={cn(
-                "group relative animate-fade-up overflow-hidden rounded-md border bg-card shadow-soft",
+                "group flex animate-fade-up flex-col overflow-hidden rounded-md border bg-card shadow-soft transition-shadow duration-500 hover:shadow-lift",
                 filter === "All" && item.span,
               )}
             >
-              <div className="size-full transition-transform duration-700 group-hover:scale-[1.03]">{item.render()}</div>
-              <span className="absolute top-4 left-4 rounded-full bg-card/95 px-3 py-1 text-[0.65rem] font-semibold tracking-[0.15em] text-foreground uppercase shadow-soft">
-                Concept · {item.category}
-              </span>
-              <div className="absolute inset-x-0 bottom-0 translate-y-2 bg-gradient-to-t from-primary via-primary/85 to-transparent p-6 pt-16 opacity-95 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
-                <h3 className="text-xl text-primary-foreground">{item.title}</h3>
-                <p className="mt-1 text-sm text-primary-foreground/75">{item.description}</p>
+              <div className="relative min-h-0 flex-1 overflow-hidden">
+                <div className="size-full transition-transform duration-700 group-hover:scale-[1.03]">{item.render()}</div>
+                <span className="absolute top-4 left-4 rounded-full bg-card/95 px-3 py-1 text-[0.65rem] font-semibold tracking-[0.15em] text-foreground uppercase shadow-soft">
+                  Concept · {item.category}
+                </span>
+              </div>
+              <div className="border-t px-5 py-4">
+                <h3 className="text-lg leading-snug text-foreground">{item.title}</h3>
+                <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{item.description}</p>
               </div>
             </li>
           ))}
