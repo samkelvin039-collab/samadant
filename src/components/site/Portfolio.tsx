@@ -256,7 +256,7 @@ export function Portfolio() {
             </h3>
             <p className="mt-4 leading-relaxed text-muted-foreground">
               These publicly available trailers are shared as creative references to show different
-              ways a book can be presented on screen. They are not StoryReach client projects.
+              ways a book can be presented on screen. They are not Samad client projects.
             </p>
             <Button asChild variant="hero" size="xl" className="mt-8">
               <a href="#contact">

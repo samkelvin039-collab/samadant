@@ -29,7 +29,7 @@ use the editor.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
 
-## Project rules (StoryReach)
+## Project rules (Samad)
 
 - Business content (services, process, contact email, suggested questions, assistant copy) lives only in `src/lib/site-content.ts`; both the site sections and the AI assistant prompt read from it so they never drift.
 - The AI assistant streams through the server route `src/routes/api/chat.ts` → `src/lib/chat.server.ts` (Lovable AI Gateway, Responses API); the system prompt stays server-side in `src/lib/chat-prompt.server.ts`.

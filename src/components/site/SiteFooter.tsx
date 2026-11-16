@@ -51,7 +51,7 @@ export function SiteFooter() {
       </div>
       <div className="border-t border-primary-foreground/10">
         <div className="container-site flex flex-col gap-2 py-6 text-xs text-primary-foreground/55 md:flex-row md:items-center md:justify-between">
-          <p>© {new Date().getFullYear()} StoryReach · Book Promotion &amp; Creative Studio</p>
+          <p>© {new Date().getFullYear()} Samad · Book Promotion &amp; Creative Studio</p>
           <p>
             Portfolio items are illustrative concepts. Results vary by book; no outcomes are
             guaranteed.

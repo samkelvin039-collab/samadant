@@ -11,9 +11,9 @@ import { SiteFooter } from "@/components/site/SiteFooter";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { WhyChoose } from "@/components/site/WhyChoose";
 
-const TITLE = "StoryReach | Professional Book Marketing and Author Promotion";
+const TITLE = "Samad | Professional Book Marketing and Author Promotion";
 const DESCRIPTION =
-  "Discover professional book marketing services with StoryReach. Explore Goodreads promotion, TikTok book features, book trailers, creative book presentation, and author-focused promotional support.";
+  "Discover professional book marketing services with Samad. Explore Goodreads promotion, TikTok book features, book trailers, creative book presentation, and author-focused promotional support.";
 
 export const Route = createFileRoute("/")({
   head: () => ({

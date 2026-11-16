@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 
-/** StoryReach quill-in-circle brand mark. Uses currentColor so it adapts to any surface. */
+/** Samad quill-in-circle brand mark. Uses currentColor so it adapts to any surface. */
 export function LogoMark({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 48 48" fill="none" aria-hidden="true" className={cn("size-10", className)}>
@@ -41,7 +41,7 @@ export function Logo({ className, inverted = false }: { className?: string; inve
             inverted ? "text-primary-foreground" : "text-foreground",
           )}
         >
-          StoryReach
+          Samad
         </span>
         <span
           className={cn(

@@ -1,10 +1,10 @@
 /**
- * Single source of truth for StoryReach business content.
+ * Single source of truth for Samad business content.
  * Used by the website sections AND by the AI assistant's knowledge prompt,
  * so the assistant never drifts from what the site actually says.
  */
 
-export const CONTACT_EMAIL = "storyreach.us@gmail.com";
+export const CONTACT_EMAIL = "samad@fourthgroup.co";
 
 export type ServiceId =
   | "listopia"
@@ -128,7 +128,7 @@ export const PROCESS_STEPS = [
   },
   {
     title: "Choose Your Service",
-    body: "StoryReach helps identify a suitable promotional approach and shapes a clear, agreed scope around your book and priorities.",
+    body: "Samad helps identify a suitable promotional approach and shapes a clear, agreed scope around your book and priorities.",
   },
   {
     title: "Prepare the Promotion",
@@ -214,21 +214,21 @@ export const SUGGESTED_QUESTIONS = [
   "How much does book promotion cost?",
   "How do I get my book featured?",
   "What information do you need from authors?",
-  "How do I get started with StoryReach?",
+  "How do I get started with Samad?",
 ];
 
-export const ASSISTANT_NAME = "StoryReach AI Assistant";
+export const ASSISTANT_NAME = "Samad AI Assistant";
 
 export const ASSISTANT_WELCOME =
-  "Welcome to StoryReach! I'm here to help you understand our book marketing services, promotional options, and how we support authors. Feel free to ask me anything about promoting your book or working with StoryReach.";
+  "Welcome to Samad! I'm here to help you understand our book marketing services, promotional options, and how we support authors. Feel free to ask me anything about promoting your book or working with Samad.";
 
 export const ASSISTANT_DISCLOSURE =
-  "I'm an AI assistant. My responses are intended to help you understand StoryReach's services. Please confirm important project details directly with the agency.";
+  "I'm an AI assistant. My responses are intended to help you understand Samad's services. Please confirm important project details directly with the agency.";
 
 export function mailtoForService(title: string) {
   const subject = encodeURIComponent(`Inquiry: ${title}`);
   const body = encodeURIComponent(
-    `Hi StoryReach,\n\nI'm interested in learning more about ${title}.\n\nBook title:\nGenre:\nBook link:\n\nThank you.`,
+    `Hi Samad,\n\nI'm interested in learning more about ${title}.\n\nBook title:\nGenre:\nBook link:\n\nThank you.`,
   );
   return `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
 }
