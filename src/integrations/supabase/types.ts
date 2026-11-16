@@ -14,13 +14,74 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      inquiries: {
+        Row: {
+          book_link: string | null
+          book_title: string
+          created_at: string
+          email: string
+          full_name: string
+          id: string
+          message: string
+          service: string
+        }
+        Insert: {
+          book_link?: string | null
+          book_title: string
+          created_at?: string
+          email: string
+          full_name: string
+          id?: string
+          message: string
+          service: string
+        }
+        Update: {
+          book_link?: string | null
+          book_title?: string
+          created_at?: string
+          email?: string
+          full_name?: string
+          id?: string
+          message?: string
+          service?: string
+        }
+        Relationships: []
+      }
+      rate_limit_events: {
+        Row: {
+          bucket: string
+          client_key: string
+          created_at: string
+          id: number
+        }
+        Insert: {
+          bucket: string
+          client_key: string
+          created_at?: string
+          id?: never
+        }
+        Update: {
+          bucket?: string
+          client_key?: string
+          created_at?: string
+          id?: never
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      check_rate_limit: {
+        Args: {
+          _bucket: string
+          _client_key: string
+          _max: number
+          _window_seconds: number
+        }
+        Returns: boolean
+      }
     }
     Enums: {
       [_ in never]: never
