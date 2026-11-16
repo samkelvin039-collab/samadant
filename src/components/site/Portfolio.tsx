@@ -86,7 +86,6 @@ function ListopiaConcept() {
     { w: "w-3/4", rank: 1 },
     { w: "w-2/3", rank: 2, highlight: true },
     { w: "w-4/5", rank: 3 },
-    { w: "w-1/2", rank: 4 },
   ];
   return (
     <div className="flex size-full flex-col justify-center gap-3 bg-secondary px-7 pt-14 pb-6" aria-label="Concept: an illustrated reader list with one highlighted book">
