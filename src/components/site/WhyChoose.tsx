@@ -33,7 +33,7 @@ export function WhyChoose() {
         />
         <ul className="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {WHY_CHOOSE.map((item, i) => {
-            const Icon = ICONS[i];
+            const Icon = ICONS[i] ?? Lightbulb;
             return (
               <li
                 key={item.title}

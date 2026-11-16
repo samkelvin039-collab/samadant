@@ -87,6 +87,7 @@ function ChatSession({ open, onClose, onReset }: { open: boolean; onClose: () =>
       const t = setTimeout(() => textareaRef.current?.focus(), 250);
       return () => clearTimeout(t);
     }
+    return undefined;
   }, [open, busy]);
 
   const ask = (text: string) => {

@@ -15,7 +15,7 @@ import { useSelectedService } from "@/lib/inquiry-store";
 import { CONTACT_EMAIL, SERVICE_OPTIONS } from "@/lib/site-content";
 import { cn } from "@/lib/utils";
 
-type FieldErrors = Partial<Record<keyof InquiryInput, string>>;
+type FieldErrors = { [K in keyof InquiryInput]?: string | undefined };
 
 const EMPTY: InquiryInput = {
   fullName: "",
@@ -307,7 +307,7 @@ function Field({
   label: string;
   required?: boolean;
   hint?: string;
-  error?: string;
+  error?: string | undefined;
   className?: string;
   children: React.ReactNode;
 }) {
