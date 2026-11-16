@@ -28,3 +28,12 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Project rules (StoryReach)
+
+- Business content (services, process, contact email, suggested questions, assistant copy) lives only in `src/lib/site-content.ts`; both the site sections and the AI assistant prompt read from it so they never drift.
+- The AI assistant streams through the server route `src/routes/api/chat.ts` → `src/lib/chat.server.ts` (Lovable AI Gateway, Responses API); the system prompt stays server-side in `src/lib/chat-prompt.server.ts`.
+- Chat history is one in-memory conversation per visit (no persistence); the server keeps only text parts, caps message length/history, and rate-limits per hashed visitor key.
+- Contact inquiries are validated with the shared zod schema in `src/lib/inquiry-schema.ts` and inserted by the `submitInquiry` server function with the admin client; the `inquiries` and `rate_limit_events` tables have RLS on and no public policies.
+- Rate limiting uses the `check_rate_limit` database function because workers are stateless.
+- The home page is one long page with in-page anchor sections, as the brief asked for smooth-scrolling navigation.
