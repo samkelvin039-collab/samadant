@@ -94,7 +94,7 @@ export async function handleChat(request: Request) {
     return jsonError(429, "You've sent a lot of messages in a short time. Please wait a few minutes and try again.");
   }
 
-  const apiKey = process.env.LOVABLE_API_KEY;
+  const apiKey = process.env["LOVABLE_API_KEY"];
   if (!apiKey) {
     console.error("LOVABLE_API_KEY is not configured");
     return jsonError(500, "The assistant isn't configured yet. Please email storyreach.us@gmail.com.");
