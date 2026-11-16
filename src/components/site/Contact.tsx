@@ -1,12 +1,26 @@
 import { useEffect, useState, type FormEvent } from "react";
 import { useServerFn } from "@tanstack/react-start";
-import { AlertCircle, ArrowRight, CheckCircle2, Clock, Loader2, Mail, ShieldCheck } from "lucide-react";
+import {
+  AlertCircle,
+  ArrowRight,
+  CheckCircle2,
+  Clock,
+  Loader2,
+  Mail,
+  ShieldCheck,
+} from "lucide-react";
 import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import { inquirySchema, type InquiryInput } from "@/lib/inquiry-schema";
@@ -88,7 +102,9 @@ export function Contact() {
       }
     } catch {
       setStatus("error");
-      setFormError(`We couldn't reach the server. Please check your connection and try again, or email ${CONTACT_EMAIL}.`);
+      setFormError(
+        `We couldn't reach the server. Please check your connection and try again, or email ${CONTACT_EMAIL}.`,
+      );
     }
   };
 
@@ -101,14 +117,20 @@ export function Contact() {
             index="06"
             title={
               <>
-                Let&apos;s shape the next step <span className="display-italic">for your book.</span>
+                Let&apos;s shape the next step{" "}
+                <span className="display-italic">for your book.</span>
               </>
             }
             intro="Share a few details about your title and what you'd like help with. We'll use your message to understand the project and the kind of support you're looking for."
           />
 
-          <div data-reveal className="mt-10 rounded-md bg-primary p-8 text-primary-foreground shadow-lift">
-            <p className="text-[0.65rem] tracking-[0.2em] text-gold-soft uppercase">Reach us directly</p>
+          <div
+            data-reveal
+            className="mt-10 rounded-md bg-primary p-8 text-primary-foreground shadow-lift"
+          >
+            <p className="text-[0.65rem] tracking-[0.2em] text-gold-soft uppercase">
+              Reach us directly
+            </p>
             <a
               href={`mailto:${CONTACT_EMAIL}`}
               className="link-underline mt-3 inline-flex items-center gap-3 font-display text-xl break-all sm:text-2xl"
@@ -131,24 +153,42 @@ export function Contact() {
 
         <div data-reveal className="rounded-md border bg-card p-6 shadow-soft sm:p-10">
           {status === "success" ? (
-            <div role="status" className="flex min-h-[28rem] flex-col items-center justify-center text-center">
+            <div
+              role="status"
+              className="flex min-h-[28rem] flex-col items-center justify-center text-center"
+            >
               <span className="grid size-16 place-items-center rounded-full bg-success/10 text-success">
                 <CheckCircle2 className="size-8" aria-hidden="true" />
               </span>
               <h3 className="mt-6 text-3xl text-foreground">Thank you — your inquiry is in.</h3>
               <p className="mt-3 max-w-sm text-muted-foreground">
-                We've received your project details and will reply to the email you provided. For anything urgent,
-                write to <a className="text-accent underline" href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.
+                We've received your project details and will reply to the email you provided. For
+                anything urgent, write to{" "}
+                <a className="text-accent underline" href={`mailto:${CONTACT_EMAIL}`}>
+                  {CONTACT_EMAIL}
+                </a>
+                .
               </p>
-              <Button variant="outlineGold" size="xl" className="mt-8" onClick={() => setStatus("idle")}>
+              <Button
+                variant="outlineGold"
+                size="xl"
+                className="mt-8"
+                onClick={() => setStatus("idle")}
+              >
                 Send another inquiry
               </Button>
             </div>
           ) : (
-            <form noValidate onSubmit={onSubmit} aria-describedby={formError ? "inq-form-error" : undefined}>
+            <form
+              noValidate
+              onSubmit={onSubmit}
+              aria-describedby={formError ? "inq-form-error" : undefined}
+            >
               <div className="flex items-center justify-between border-b pb-5">
                 <p className="eyebrow">Project inquiry</p>
-                <span className="text-accent" aria-hidden="true">✳</span>
+                <span className="text-accent" aria-hidden="true">
+                  ✳
+                </span>
               </div>
 
               <div className="mt-7 grid gap-5 sm:grid-cols-2">
@@ -206,7 +246,13 @@ export function Contact() {
                     maxLength={500}
                   />
                 </Field>
-                <Field id="service" label="Service of interest" required error={errors.service} className="sm:col-span-2">
+                <Field
+                  id="service"
+                  label="Service of interest"
+                  required
+                  error={errors.service}
+                  className="sm:col-span-2"
+                >
                   <Select
                     value={values.service}
                     onValueChange={(v) => {
@@ -232,7 +278,13 @@ export function Contact() {
                     </SelectContent>
                   </Select>
                 </Field>
-                <Field id="message" label="Message" required error={errors.message} className="sm:col-span-2">
+                <Field
+                  id="message"
+                  label="Message"
+                  required
+                  error={errors.message}
+                  className="sm:col-span-2"
+                >
                   <Textarea
                     id="inq-message"
                     rows={5}
@@ -274,7 +326,13 @@ export function Contact() {
                 <p className="max-w-xs text-xs leading-relaxed text-muted-foreground">
                   Please avoid sharing sensitive personal information.
                 </p>
-                <Button type="submit" variant="hero" size="xl" disabled={status === "submitting"} className="w-full sm:w-auto">
+                <Button
+                  type="submit"
+                  variant="hero"
+                  size="xl"
+                  disabled={status === "submitting"}
+                  className="w-full sm:w-auto"
+                >
                   {status === "submitting" ? (
                     <>
                       <Loader2 className="animate-spin" aria-hidden="true" /> Sending…
@@ -313,7 +371,10 @@ function Field({
 }) {
   return (
     <div className={cn("flex flex-col gap-2", className)}>
-      <Label htmlFor={`inq-${id}`} className="flex items-center justify-between text-sm font-medium text-foreground">
+      <Label
+        htmlFor={`inq-${id}`}
+        className="flex items-center justify-between text-sm font-medium text-foreground"
+      >
         <span>
           {label}
           {required && (

@@ -13,8 +13,16 @@ const valid = {
   message: "I'd love a TikTok feature for my debut novel.",
 };
 
-const userMsg = (id: string, text: string) => ({ id, role: "user" as const, parts: [{ type: "text", text }] });
-const botMsg = (id: string, text: string) => ({ id, role: "assistant" as const, parts: [{ type: "text", text }] });
+const userMsg = (id: string, text: string) => ({
+  id,
+  role: "user" as const,
+  parts: [{ type: "text", text }],
+});
+const botMsg = (id: string, text: string) => ({
+  id,
+  role: "assistant" as const,
+  parts: [{ type: "text", text }],
+});
 
 describe("StoryReach services", () => {
   it("offers exactly the nine agreed services", () => {
@@ -39,11 +47,15 @@ describe("Inquiry form rules", () => {
 
   it("only accepts services from the published list", () => {
     expect(SERVICE_OPTIONS).toContain("I'm not sure yet");
-    expect(inquirySchema.safeParse({ ...valid, service: "Guaranteed bestseller package" }).success).toBe(false);
+    expect(
+      inquirySchema.safeParse({ ...valid, service: "Guaranteed bestseller package" }).success,
+    ).toBe(false);
   });
 
   it("rejects submissions that fill the hidden spam-trap field", () => {
-    expect(inquirySchema.safeParse({ ...valid, website: "http://spam.example" }).success).toBe(false);
+    expect(inquirySchema.safeParse({ ...valid, website: "http://spam.example" }).success).toBe(
+      false,
+    );
   });
 });
 
@@ -55,7 +67,9 @@ describe("AI chat request limits", () => {
   });
 
   it("keeps only the most recent 16 messages of history", () => {
-    const history = Array.from({ length: 30 }, (_, i) => (i % 2 === 0 ? userMsg(`u${i}`, `q${i}`) : botMsg(`b${i}`, `a${i}`)));
+    const history = Array.from({ length: 30 }, (_, i) =>
+      i % 2 === 0 ? userMsg(`u${i}`, `q${i}`) : botMsg(`b${i}`, `a${i}`),
+    );
     history.push(userMsg("last", "latest question"));
     const result = sanitizeMessages(history);
     if ("error" in result) throw new Error("unexpected error");
@@ -69,7 +83,14 @@ describe("AI chat request limits", () => {
 
   it("drops non-text parts such as reasoning before sending to the model", () => {
     const result = sanitizeMessages([
-      { id: "u", role: "user", parts: [{ type: "text", text: "Hello" }, { type: "reasoning", text: "secret" }] },
+      {
+        id: "u",
+        role: "user",
+        parts: [
+          { type: "text", text: "Hello" },
+          { type: "reasoning", text: "secret" },
+        ],
+      },
     ]);
     if ("error" in result) throw new Error("unexpected error");
     expect(result.messages[0]?.parts).toEqual([{ type: "text", text: "Hello" }]);

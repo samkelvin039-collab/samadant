@@ -39,9 +39,16 @@ export function ChatLauncher() {
         )}
       >
         <span className="relative grid size-8 place-items-center rounded-full bg-accent text-accent-foreground transition-transform duration-300 group-hover:rotate-12">
-          {open ? <X className="size-4" aria-hidden="true" /> : <MessageCircleMore className="size-4" aria-hidden="true" />}
+          {open ? (
+            <X className="size-4" aria-hidden="true" />
+          ) : (
+            <MessageCircleMore className="size-4" aria-hidden="true" />
+          )}
           {!open && (
-            <span className="absolute -top-0.5 -right-0.5 size-2.5 rounded-full border-2 border-primary bg-gold-soft" aria-hidden="true" />
+            <span
+              className="absolute -top-0.5 -right-0.5 size-2.5 rounded-full border-2 border-primary bg-gold-soft"
+              aria-hidden="true"
+            />
           )}
         </span>
         <span className="text-sm font-semibold tracking-wide">{open ? "Close" : "Ask AI"}</span>

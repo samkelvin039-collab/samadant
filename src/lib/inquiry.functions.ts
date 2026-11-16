@@ -13,7 +13,8 @@ export const submitInquiry = createServerFn({ method: "POST" })
     if (!allowed) {
       return {
         ok: false as const,
-        error: "You've sent several inquiries recently. Please wait a little while, or email storyreach.us@gmail.com directly.",
+        error:
+          "You've sent several inquiries recently. Please wait a little while, or email storyreach.us@gmail.com directly.",
       };
     }
 
@@ -30,7 +31,8 @@ export const submitInquiry = createServerFn({ method: "POST" })
       console.error("inquiry insert failed", error.message);
       return {
         ok: false as const,
-        error: "We couldn't send your inquiry just now. Please try again, or email storyreach.us@gmail.com.",
+        error:
+          "We couldn't send your inquiry just now. Please try again, or email storyreach.us@gmail.com.",
       };
     }
     return { ok: true as const };

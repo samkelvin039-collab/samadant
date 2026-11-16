@@ -68,7 +68,11 @@ export function Services() {
           {SERVICES.map((service, i) => {
             const Icon = SERVICE_ICONS[service.id];
             return (
-              <li key={service.id} data-reveal className="group relative flex flex-col bg-card p-8 transition-colors duration-300 hover:bg-background">
+              <li
+                key={service.id}
+                data-reveal
+                className="group relative flex flex-col bg-card p-8 transition-colors duration-300 hover:bg-background"
+              >
                 <span
                   className="absolute inset-x-0 top-0 h-0.5 origin-left scale-x-0 bg-accent transition-transform duration-500 group-hover:scale-x-100"
                   aria-hidden="true"
@@ -77,13 +81,20 @@ export function Services() {
                   <span className="grid size-12 place-items-center rounded-full border border-accent/30 text-accent transition-all duration-300 group-hover:bg-accent group-hover:text-accent-foreground">
                     <Icon className="size-5" aria-hidden="true" />
                   </span>
-                  <span className="font-display text-sm text-muted-foreground">{String(i + 1).padStart(2, "0")}</span>
+                  <span className="font-display text-sm text-muted-foreground">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
                 </div>
                 <h3 className="mt-7 text-2xl leading-snug text-foreground">{service.title}</h3>
-                <p className="mt-3 flex-1 leading-relaxed text-muted-foreground">{service.summary}</p>
+                <p className="mt-3 flex-1 leading-relaxed text-muted-foreground">
+                  {service.summary}
+                </p>
                 <ul className="mt-6 flex flex-wrap gap-2">
                   {service.tags.map((t) => (
-                    <li key={t} className="rounded-full bg-secondary px-3 py-1 text-xs text-secondary-foreground">
+                    <li
+                      key={t}
+                      className="rounded-full bg-secondary px-3 py-1 text-xs text-secondary-foreground"
+                    >
                       {t}
                     </li>
                   ))}
@@ -128,8 +139,12 @@ function ServiceDetail({ service, onClose }: { service: Service; onClose: () => 
           <Icon className="size-5" aria-hidden="true" />
         </span>
         <DialogHeader className="mt-5 text-left">
-          <DialogTitle className="font-display text-3xl font-medium text-primary-foreground">{service.title}</DialogTitle>
-          <DialogDescription className="text-primary-foreground/70">{service.summary}</DialogDescription>
+          <DialogTitle className="font-display text-3xl font-medium text-primary-foreground">
+            {service.title}
+          </DialogTitle>
+          <DialogDescription className="text-primary-foreground/70">
+            {service.summary}
+          </DialogDescription>
         </DialogHeader>
       </div>
       <div className="space-y-6 px-8 py-7">
@@ -142,7 +157,8 @@ function ServiceDetail({ service, onClose }: { service: Service; onClose: () => 
           <p className="mt-2 leading-relaxed text-foreground">{service.howItHelps}</p>
         </div>
         <p className="text-xs leading-relaxed text-muted-foreground">
-          Results depend on each book and platform; we never promise specific sales, rankings, reviews or placements.
+          Results depend on each book and platform; we never promise specific sales, rankings,
+          reviews or placements.
         </p>
         <div className="flex flex-wrap gap-3 pt-2">
           <Button

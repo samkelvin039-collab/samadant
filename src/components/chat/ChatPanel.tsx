@@ -3,7 +3,11 @@ import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport, type UIMessage } from "ai";
 import { AlertCircle, Mail, RotateCcw, X } from "lucide-react";
 
-import { Conversation, ConversationContent, ConversationScrollButton } from "@/components/ai-elements/conversation";
+import {
+  Conversation,
+  ConversationContent,
+  ConversationScrollButton,
+} from "@/components/ai-elements/conversation";
 import { Message, MessageContent, MessageResponse } from "@/components/ai-elements/message";
 import {
   PromptInput,
@@ -37,7 +41,8 @@ function readableError(error: Error | undefined) {
   } catch {
     /* not JSON */
   }
-  if (/failed to fetch|network/i.test(raw)) return "You appear to be offline. Check your connection and try again.";
+  if (/failed to fetch|network/i.test(raw))
+    return "You appear to be offline. Check your connection and try again.";
   return raw && raw.length < 220 ? raw : "Sorry, something went wrong. Please try again.";
 }
 
@@ -66,21 +71,38 @@ export default function ChatPanel({ open, onClose }: { open: boolean; onClose: (
       )}
       style={{ transformOrigin: "bottom right" }}
     >
-      <ChatSession key={session} open={open} onClose={onClose} onReset={() => setSession((s) => s + 1)} />
+      <ChatSession
+        key={session}
+        open={open}
+        onClose={onClose}
+        onReset={() => setSession((s) => s + 1)}
+      />
     </div>
   );
 }
 
-function ChatSession({ open, onClose, onReset }: { open: boolean; onClose: () => void; onReset: () => void }) {
+function ChatSession({
+  open,
+  onClose,
+  onReset,
+}: {
+  open: boolean;
+  onClose: () => void;
+  onReset: () => void;
+}) {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const [draft, setDraft] = useState("");
   const transport = useMemo(() => new DefaultChatTransport({ api: "/api/chat" }), []);
-  const { messages, sendMessage, status, error, stop, regenerate, clearError } = useChat({ transport });
+  const { messages, sendMessage, status, error, stop, regenerate, clearError } = useChat({
+    transport,
+  });
 
   const busy = status === "submitted" || status === "streaming";
   const hasUserMessages = messages.some((m) => m.role === "user");
   const last = messages[messages.length - 1];
-  const waiting = status === "submitted" || (status === "streaming" && (!last || last.role !== "assistant" || !textOf(last)));
+  const waiting =
+    status === "submitted" ||
+    (status === "streaming" && (!last || last.role !== "assistant" || !textOf(last)));
 
   useEffect(() => {
     if (open && !busy) {
@@ -203,13 +225,21 @@ function ChatSession({ open, onClose, onReset }: { open: boolean; onClose: () =>
           )}
 
           {error && !busy && (
-            <div role="alert" className="flex flex-col gap-3 rounded-lg border border-destructive/25 bg-destructive/5 p-3.5 text-sm text-destructive">
+            <div
+              role="alert"
+              className="flex flex-col gap-3 rounded-lg border border-destructive/25 bg-destructive/5 p-3.5 text-sm text-destructive"
+            >
               <p className="flex gap-2">
                 <AlertCircle className="mt-0.5 size-4 shrink-0" aria-hidden="true" />
                 {readableError(error)}
               </p>
               <div className="flex flex-wrap gap-2">
-                <Button size="sm" variant="outline" className="rounded-full" onClick={() => void regenerate()}>
+                <Button
+                  size="sm"
+                  variant="outline"
+                  className="rounded-full"
+                  onClick={() => void regenerate()}
+                >
                   Try again
                 </Button>
                 <Button asChild size="sm" variant="ghost" className="rounded-full text-foreground">
@@ -226,7 +256,10 @@ function ChatSession({ open, onClose, onReset }: { open: boolean; onClose: () =>
 
       {/* Composer */}
       <div className="border-t bg-card px-3 pt-3 pb-2">
-        <PromptInput onSubmit={handleSubmit} className="rounded-xl border-input bg-background shadow-none">
+        <PromptInput
+          onSubmit={handleSubmit}
+          className="rounded-xl border-input bg-background shadow-none"
+        >
           <PromptInputTextarea
             ref={textareaRef}
             value={draft}
@@ -237,8 +270,15 @@ function ChatSession({ open, onClose, onReset }: { open: boolean; onClose: () =>
             className="max-h-32 min-h-11 text-base sm:text-sm"
           />
           <PromptInputFooter className="justify-between px-3 pb-2">
-            <span className={cn("text-[0.65rem] text-muted-foreground", draft.length > MAX_CHARS * 0.9 && "text-destructive")}>
-              {draft.length > 0 ? `${draft.length}/${MAX_CHARS}` : "Enter to send · Shift+Enter for a new line"}
+            <span
+              className={cn(
+                "text-[0.65rem] text-muted-foreground",
+                draft.length > MAX_CHARS * 0.9 && "text-destructive",
+              )}
+            >
+              {draft.length > 0
+                ? `${draft.length}/${MAX_CHARS}`
+                : "Enter to send · Shift+Enter for a new line"}
             </span>
             <PromptInputSubmit
               status={status}
@@ -248,7 +288,9 @@ function ChatSession({ open, onClose, onReset }: { open: boolean; onClose: () =>
             />
           </PromptInputFooter>
         </PromptInput>
-        <p className="mt-2 px-1 text-[0.65rem] leading-snug text-muted-foreground">{ASSISTANT_DISCLOSURE}</p>
+        <p className="mt-2 px-1 text-[0.65rem] leading-snug text-muted-foreground">
+          {ASSISTANT_DISCLOSURE}
+        </p>
       </div>
     </>
   );

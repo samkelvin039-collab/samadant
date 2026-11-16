@@ -1,11 +1,5 @@
 // Server-only: the StoryReach assistant's instructions and knowledge.
-import {
-  CONTACT_EMAIL,
-  PROCESS_STEPS,
-  SERVICES,
-  WHY_CHOOSE,
-  PARTNERS,
-} from "@/lib/site-content";
+import { CONTACT_EMAIL, PROCESS_STEPS, SERVICES, WHY_CHOOSE, PARTNERS } from "@/lib/site-content";
 
 export function buildStoryReachInstructions() {
   const services = SERVICES.map(

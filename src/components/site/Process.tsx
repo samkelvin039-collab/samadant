@@ -20,22 +20,37 @@ export function Process() {
         />
 
         <ol className="relative mt-16 grid gap-10 md:grid-cols-2 lg:grid-cols-4 lg:gap-6">
-          <span className="absolute top-7 right-[12%] left-[12%] hidden h-px bg-border lg:block" aria-hidden="true" />
+          <span
+            className="absolute top-7 right-[12%] left-[12%] hidden h-px bg-border lg:block"
+            aria-hidden="true"
+          />
           {PROCESS_STEPS.map((step, i) => (
-            <li key={step.title} data-reveal className="relative text-center" style={{ transitionDelay: `${i * 90}ms` }}>
+            <li
+              key={step.title}
+              data-reveal
+              className="relative text-center"
+              style={{ transitionDelay: `${i * 90}ms` }}
+            >
               <span className="relative mx-auto grid size-14 place-items-center rounded-full border border-accent bg-background font-display text-xl text-accent shadow-soft">
                 {i + 1}
               </span>
               <h3 className="mt-6 text-2xl text-foreground">{step.title}</h3>
-              <p className="mx-auto mt-3 max-w-xs text-sm leading-relaxed text-muted-foreground">{step.body}</p>
+              <p className="mx-auto mt-3 max-w-xs text-sm leading-relaxed text-muted-foreground">
+                {step.body}
+              </p>
             </li>
           ))}
         </ol>
 
-        <div data-reveal className="mt-24 flex flex-col items-center justify-between gap-6 rounded-md border bg-paper p-8 md:flex-row md:p-10">
+        <div
+          data-reveal
+          className="mt-24 flex flex-col items-center justify-between gap-6 rounded-md border bg-paper p-8 md:flex-row md:p-10"
+        >
           <div>
             <p className="eyebrow">Collaboration &amp; partners</p>
-            <p className="mt-2 font-display text-2xl text-foreground">Working together with creative partners.</p>
+            <p className="mt-2 font-display text-2xl text-foreground">
+              Working together with creative partners.
+            </p>
           </div>
           <ul className="flex flex-wrap gap-3">
             {PARTNERS.map((p) => (

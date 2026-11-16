@@ -24,10 +24,14 @@ export function Hero() {
             className="mt-7 max-w-xl animate-fade-up text-base leading-relaxed text-muted-foreground md:text-lg"
             style={{ animationDelay: "160ms" }}
           >
-            Helping authors strengthen their book visibility, connect with readers, and create meaningful
-            opportunities for their stories through strategic book marketing and creative promotion.
+            Helping authors strengthen their book visibility, connect with readers, and create
+            meaningful opportunities for their stories through strategic book marketing and creative
+            promotion.
           </p>
-          <div className="mt-10 flex animate-fade-up flex-wrap items-center gap-3" style={{ animationDelay: "240ms" }}>
+          <div
+            className="mt-10 flex animate-fade-up flex-wrap items-center gap-3"
+            style={{ animationDelay: "240ms" }}
+          >
             <Button asChild variant="hero" size="xl">
               <a href="#services">
                 Explore Our Services <ArrowRight />
@@ -40,13 +44,20 @@ export function Hero() {
             </Button>
           </div>
 
-          <div className="mt-12 flex animate-fade-up items-center gap-4" style={{ animationDelay: "320ms" }}>
+          <div
+            className="mt-12 flex animate-fade-up items-center gap-4"
+            style={{ animationDelay: "320ms" }}
+          >
             <span className="grid size-11 place-items-center rounded-full border border-accent/40 text-accent">
               <BookOpen className="size-5" aria-hidden="true" />
             </span>
             <div>
-              <p className="text-sm font-semibold text-foreground">Personal attention. Practical plans.</p>
-              <p className="text-sm text-muted-foreground">Reader-aware creative work, explained clearly.</p>
+              <p className="text-sm font-semibold text-foreground">
+                Personal attention. Practical plans.
+              </p>
+              <p className="text-sm text-muted-foreground">
+                Reader-aware creative work, explained clearly.
+              </p>
             </div>
           </div>
         </div>
@@ -56,7 +67,10 @@ export function Hero() {
             className="absolute -inset-6 animate-spin-slow rounded-full border border-dashed border-accent/30"
             aria-hidden="true"
           />
-          <div className="absolute -inset-1 rounded-full border border-accent/20" aria-hidden="true" />
+          <div
+            className="absolute -inset-1 rounded-full border border-accent/20"
+            aria-hidden="true"
+          />
           <div className="relative aspect-square overflow-hidden rounded-full border-8 border-card shadow-float">
             <img
               src={heroBooks}
@@ -70,7 +84,9 @@ export function Hero() {
 
           <div className="absolute -bottom-4 -left-2 animate-float rounded-md border bg-card/95 px-5 py-4 shadow-lift backdrop-blur sm:left-0">
             <p className="font-display text-3xl text-foreground">9</p>
-            <p className="text-xs tracking-wide text-muted-foreground">promotion &amp; creative services</p>
+            <p className="text-xs tracking-wide text-muted-foreground">
+              promotion &amp; creative services
+            </p>
           </div>
           <div
             className="absolute top-6 -right-2 animate-float rounded-md bg-primary px-5 py-4 text-primary-foreground shadow-lift sm:right-0"
@@ -89,9 +105,16 @@ export function Hero() {
           </span>
           <ul className="flex flex-wrap items-center gap-x-6 gap-y-2">
             {CHANNELS.map((c, i) => (
-              <li key={c} className="flex items-center gap-6 font-display text-lg text-foreground/80 italic">
+              <li
+                key={c}
+                className="flex items-center gap-6 font-display text-lg text-foreground/80 italic"
+              >
                 {c}
-                {i < CHANNELS.length - 1 && <span className="text-accent not-italic" aria-hidden="true">✦</span>}
+                {i < CHANNELS.length - 1 && (
+                  <span className="text-accent not-italic" aria-hidden="true">
+                    ✦
+                  </span>
+                )}
               </li>
             ))}
           </ul>

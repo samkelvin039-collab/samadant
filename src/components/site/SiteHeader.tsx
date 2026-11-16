@@ -53,7 +53,8 @@ export function SiteHeader() {
       <div className="bg-primary text-primary-foreground">
         <p className="container-site flex h-8 items-center justify-center gap-2 text-[0.6rem] font-semibold tracking-[0.16em] uppercase sm:text-[0.65rem] sm:tracking-[0.22em]">
           <span className="size-1.5 rounded-full bg-accent" aria-hidden="true" />
-          Book promotion · Creative assets<span className="hidden sm:inline"> · Author visibility</span>
+          Book promotion · Creative assets
+          <span className="hidden sm:inline"> · Author visibility</span>
         </p>
       </div>
       <header
@@ -64,7 +65,12 @@ export function SiteHeader() {
             : "border-transparent bg-background",
         )}
       >
-        <div className={cn("container-site flex items-center justify-between transition-all", scrolled ? "h-16" : "h-20")}>
+        <div
+          className={cn(
+            "container-site flex items-center justify-between transition-all",
+            scrolled ? "h-16" : "h-20",
+          )}
+        >
           <a href="#top" aria-label="StoryReach home" onClick={() => setOpen(false)}>
             <Logo />
           </a>
@@ -104,7 +110,6 @@ export function SiteHeader() {
             </Button>
           </div>
         </div>
-
       </header>
       <div
         id="mobile-menu"
@@ -120,11 +125,19 @@ export function SiteHeader() {
           <a href="#top" aria-label="StoryReach home" onClick={() => setOpen(false)}>
             <Logo />
           </a>
-          <Button variant="ghost" size="icon" aria-label="Close menu" onClick={() => setOpen(false)}>
+          <Button
+            variant="ghost"
+            size="icon"
+            aria-label="Close menu"
+            onClick={() => setOpen(false)}
+          >
             <X />
           </Button>
         </div>
-        <nav aria-label="Mobile" className="container-site flex flex-1 flex-col gap-1 overflow-y-auto pt-4 pb-10">
+        <nav
+          aria-label="Mobile"
+          className="container-site flex flex-1 flex-col gap-1 overflow-y-auto pt-4 pb-10"
+        >
           {NAV_LINKS.map((link, i) => (
             <a
               key={link.href}
@@ -137,7 +150,9 @@ export function SiteHeader() {
               style={{ transitionDelay: open ? `${80 + i * 50}ms` : "0ms" }}
             >
               {link.label}
-              <span className="font-sans text-xs tracking-[0.2em] text-muted-foreground">0{i + 1}</span>
+              <span className="font-sans text-xs tracking-[0.2em] text-muted-foreground">
+                0{i + 1}
+              </span>
             </a>
           ))}
           <Button asChild variant="hero" size="xl" className="mt-8 w-full">
