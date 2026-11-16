@@ -83,15 +83,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "StoryReach | Professional Book Marketing and Author Promotion" },
+      { title: "Samad | Professional Book Marketing and Author Promotion" },
       {
         name: "description",
         content:
           "Book marketing and author promotion: Goodreads promotion, TikTok book features, book trailers, mockups and creative support.",
       },
-      { name: "author", content: "StoryReach" },
+      { name: "author", content: "Samad" },
       { name: "theme-color", content: "#1b3442" },
-      { property: "og:site_name", content: "StoryReach" },
+      { property: "og:site_name", content: "Samad" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],

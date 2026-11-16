@@ -55,14 +55,14 @@ export function About() {
                 &ldquo;Every detail should help readers understand the story waiting inside.&rdquo;
               </p>
               <p className="mt-3 text-[0.65rem] tracking-[0.2em] text-gold-soft uppercase">
-                The StoryReach approach
+                The Samad approach
               </p>
             </div>
           </div>
 
           <div>
             <SectionHeading
-              eyebrow="About StoryReach"
+              eyebrow="About Samad"
               index="01"
               title={
                 <>
@@ -70,7 +70,7 @@ export function About() {
                   <span className="display-italic">your story.</span>
                 </>
               }
-              intro="StoryReach is a book marketing and author-promotion agency. A book is a world of its own — the right presentation helps readers understand what makes it worth exploring."
+              intro="Samad is a book marketing and author-promotion agency. A book is a world of its own — the right presentation helps readers understand what makes it worth exploring."
             />
             <p data-reveal className="mt-5 leading-relaxed text-muted-foreground">
               We support authors with Goodreads discovery, reader-community outreach, TikTok

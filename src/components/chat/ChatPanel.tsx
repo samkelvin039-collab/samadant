@@ -58,7 +58,7 @@ export default function ChatPanel({ open, onClose }: { open: boolean; onClose: (
 
   return (
     <div
-      id="storyreach-chat"
+      id="samad-chat"
       role="dialog"
       aria-modal="false"
       aria-label={ASSISTANT_NAME}
@@ -138,7 +138,7 @@ function ChatSession({
           <p className="truncate font-display text-base leading-tight">{ASSISTANT_NAME}</p>
           <p className="flex items-center gap-1.5 text-xs text-primary-foreground/65">
             <span className="size-1.5 rounded-full bg-gold-soft" aria-hidden="true" />
-            Answers about StoryReach services
+            Answers about Samad services
           </p>
         </div>
         <Button

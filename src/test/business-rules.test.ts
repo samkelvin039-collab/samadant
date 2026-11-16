@@ -24,7 +24,7 @@ const botMsg = (id: string, text: string) => ({
   parts: [{ type: "text", text }],
 });
 
-describe("StoryReach services", () => {
+describe("Samad services", () => {
   it("offers exactly the nine agreed services", () => {
     expect(SERVICES).toHaveLength(9);
   });

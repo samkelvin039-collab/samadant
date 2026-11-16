@@ -71,7 +71,7 @@ export function SiteHeader() {
             scrolled ? "h-16" : "h-20",
           )}
         >
-          <a href="#top" aria-label="StoryReach home" onClick={() => setOpen(false)}>
+          <a href="#top" aria-label="Samad home" onClick={() => setOpen(false)}>
             <Logo />
           </a>
 
@@ -122,7 +122,7 @@ export function SiteHeader() {
         )}
       >
         <div className="container-site flex h-20 items-center justify-between border-b">
-          <a href="#top" aria-label="StoryReach home" onClick={() => setOpen(false)}>
+          <a href="#top" aria-label="Samad home" onClick={() => setOpen(false)}>
             <Logo />
           </a>
           <Button

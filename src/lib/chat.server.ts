@@ -8,7 +8,7 @@ import {
   getLovableAiGatewayRunId,
   withLovableAiGatewayRunIdHeader,
 } from "@/lib/ai-gateway/run-id.server";
-import { buildStoryReachInstructions } from "@/lib/chat-prompt.server";
+import { buildSamadInstructions } from "@/lib/chat-prompt.server";
 import { checkRateLimit, getClientKey } from "@/lib/rate-limit.server";
 
 const GATEWAY_URL = "https://ai.gateway.lovable.dev/v1";
@@ -70,9 +70,9 @@ function friendlyError(error: unknown) {
   if (status === 429)
     return "The assistant is getting a lot of questions right now. Please try again in a minute.";
   if (status === 402 || status === 403)
-    return `The assistant is temporarily unavailable. You can still reach the team at storyreach.us@gmail.com.`;
+    return `The assistant is temporarily unavailable. You can still reach the team at samad@fourthgroup.co.`;
   if (error instanceof Error && error.name === "AbortError") return "Request cancelled.";
-  return "Sorry, something went wrong while answering. Please try again, or email storyreach.us@gmail.com.";
+  return "Sorry, something went wrong while answering. Please try again, or email samad@fourthgroup.co.";
 }
 
 export async function handleChat(request: Request) {
@@ -111,7 +111,7 @@ export async function handleChat(request: Request) {
     console.error("LOVABLE_API_KEY is not configured");
     return jsonError(
       500,
-      "The assistant isn't configured yet. Please email storyreach.us@gmail.com.",
+      "The assistant isn't configured yet. Please email samad@fourthgroup.co.",
     );
   }
 
@@ -125,7 +125,7 @@ export async function handleChat(request: Request) {
 
   const result = streamText({
     model: provider.responses(MODEL),
-    instructions: buildStoryReachInstructions(),
+    instructions: buildSamadInstructions(),
     messages: await convertToModelMessages(sanitized.messages),
     abortSignal: request.signal,
     maxRetries: 1,

@@ -39,7 +39,7 @@ export function WhyChoose() {
       <div className="container-site relative">
         <SectionHeading
           inverted
-          eyebrow="Why choose StoryReach"
+          eyebrow="Why choose Samad"
           index="04"
           title={
             <>

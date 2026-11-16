@@ -31,8 +31,8 @@ export function ChatLauncher() {
         type="button"
         onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
-        aria-controls="storyreach-chat"
-        aria-label={open ? "Close the StoryReach AI assistant" : "Ask the StoryReach AI assistant"}
+        aria-controls="samad-chat"
+        aria-label={open ? "Close the Samad AI assistant" : "Ask the Samad AI assistant"}
         className={cn(
           "group fixed right-4 bottom-4 z-50 flex items-center gap-2.5 rounded-full border border-gold-soft/40 bg-primary py-3 pr-5 pl-3.5 text-primary-foreground shadow-float transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lift focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none sm:right-6 sm:bottom-6",
           open && "max-sm:hidden",
