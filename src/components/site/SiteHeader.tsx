@@ -51,9 +51,9 @@ export function SiteHeader() {
   return (
     <>
       <div className="bg-primary text-primary-foreground">
-        <p className="container-site flex h-8 items-center justify-center gap-2 text-[0.65rem] font-semibold tracking-[0.22em] uppercase">
+        <p className="container-site flex h-8 items-center justify-center gap-2 text-[0.6rem] font-semibold tracking-[0.16em] uppercase sm:text-[0.65rem] sm:tracking-[0.22em]">
           <span className="size-1.5 rounded-full bg-accent" aria-hidden="true" />
-          Book promotion · Creative assets · Author visibility
+          Book promotion · Creative assets<span className="hidden sm:inline"> · Author visibility</span>
         </p>
       </div>
       <header
@@ -112,7 +112,7 @@ export function SiteHeader() {
         aria-modal="true"
         aria-label="Menu"
         className={cn(
-          "fixed inset-0 z-50 flex flex-col bg-background transition-all duration-300 lg:hidden",
+          "fixed inset-0 z-[60] flex flex-col bg-background transition-all duration-300 lg:hidden",
           open ? "visible opacity-100" : "pointer-events-none invisible opacity-0",
         )}
       >
