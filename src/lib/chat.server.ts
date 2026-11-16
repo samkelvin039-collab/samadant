@@ -56,8 +56,8 @@ export function sanitizeMessages(raw: z.infer<typeof messageSchema>[]) {
   }
   const recent = cleaned.slice(-CHAT_LIMITS.maxHistory);
   // History must open with a visitor turn and end with the new question.
-  while (recent.length && recent[0].role !== "user") recent.shift();
-  if (!recent.length || recent[recent.length - 1].role !== "user") {
+  while (recent.length && recent[0]?.role !== "user") recent.shift();
+  if (!recent.length || recent[recent.length - 1]?.role !== "user") {
     return { error: "Please send a question." } as const;
   }
   return { messages: recent } as const;
