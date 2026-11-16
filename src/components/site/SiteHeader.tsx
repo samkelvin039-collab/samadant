@@ -95,48 +95,58 @@ export function SiteHeader() {
               variant="ghost"
               size="icon"
               className="lg:hidden"
-              aria-label={open ? "Close menu" : "Open menu"}
+              aria-label="Open menu"
               aria-expanded={open}
               aria-controls="mobile-menu"
-              onClick={() => setOpen((v) => !v)}
+              onClick={() => setOpen(true)}
             >
-              {open ? <X /> : <Menu />}
+              <Menu />
             </Button>
           </div>
         </div>
 
-        <div
-          id="mobile-menu"
-          className={cn(
-            "fixed inset-x-0 top-[inherit] bottom-0 z-40 bg-background transition-all duration-300 lg:hidden",
-            open ? "visible opacity-100" : "pointer-events-none invisible opacity-0",
-          )}
-          style={{ top: scrolled ? "4rem" : "5rem" }}
-        >
-          <nav aria-label="Mobile" className="container-site flex h-full flex-col gap-1 pt-6 pb-10">
-            {NAV_LINKS.map((link, i) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={() => setOpen(false)}
-                className={cn(
-                  "flex items-baseline justify-between border-b py-5 font-display text-3xl text-foreground transition-all duration-500 hover:text-accent",
-                  open ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0",
-                )}
-                style={{ transitionDelay: open ? `${80 + i * 50}ms` : "0ms" }}
-              >
-                {link.label}
-                <span className="font-sans text-xs tracking-[0.2em] text-muted-foreground">0{i + 1}</span>
-              </a>
-            ))}
-            <Button asChild variant="hero" size="xl" className="mt-8 w-full">
-              <a href="#contact" onClick={() => setOpen(false)}>
-                Get Started <ArrowRight />
-              </a>
-            </Button>
-          </nav>
-        </div>
       </header>
+      <div
+        id="mobile-menu"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Menu"
+        className={cn(
+          "fixed inset-0 z-50 flex flex-col bg-background transition-all duration-300 lg:hidden",
+          open ? "visible opacity-100" : "pointer-events-none invisible opacity-0",
+        )}
+      >
+        <div className="container-site flex h-20 items-center justify-between border-b">
+          <a href="#top" aria-label="StoryReach home" onClick={() => setOpen(false)}>
+            <Logo />
+          </a>
+          <Button variant="ghost" size="icon" aria-label="Close menu" onClick={() => setOpen(false)}>
+            <X />
+          </Button>
+        </div>
+        <nav aria-label="Mobile" className="container-site flex flex-1 flex-col gap-1 overflow-y-auto pt-4 pb-10">
+          {NAV_LINKS.map((link, i) => (
+            <a
+              key={link.href}
+              href={link.href}
+              onClick={() => setOpen(false)}
+              className={cn(
+                "flex items-baseline justify-between border-b py-5 font-display text-3xl text-foreground transition-all duration-500 hover:text-accent",
+                open ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0",
+              )}
+              style={{ transitionDelay: open ? `${80 + i * 50}ms` : "0ms" }}
+            >
+              {link.label}
+              <span className="font-sans text-xs tracking-[0.2em] text-muted-foreground">0{i + 1}</span>
+            </a>
+          ))}
+          <Button asChild variant="hero" size="xl" className="mt-8 w-full">
+            <a href="#contact" onClick={() => setOpen(false)}>
+              Get Started <ArrowRight />
+            </a>
+          </Button>
+        </nav>
+      </div>
     </>
   );
 }
