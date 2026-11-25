@@ -37,7 +37,7 @@ export function Logo({ className, inverted = false }: { className?: string; inve
       <span className="flex flex-col leading-none">
         <span
           className={cn(
-            "font-display text-2xl font-semibold tracking-tight",
+            "font-display text-2xl font-medium tracking-[0.3em] uppercase",
             inverted ? "text-primary-foreground" : "text-foreground",
           )}
         >
@@ -45,8 +45,8 @@ export function Logo({ className, inverted = false }: { className?: string; inve
         </span>
         <span
           className={cn(
-            "mt-1 text-[0.58rem] font-medium uppercase tracking-[0.2em]",
-            inverted ? "text-primary-foreground/60" : "text-muted-foreground",
+            "mt-1.5 text-[0.56rem] font-medium uppercase tracking-[0.22em]",
+            "text-accent",
           )}
         >
           Book marketing &amp; author visibility

@@ -82,8 +82,8 @@ export function SiteHeader() {
                 href={link.href}
                 aria-current={active === link.href ? "true" : undefined}
                 className={cn(
-                  "link-underline py-1 text-sm transition-colors hover:text-accent",
-                  active === link.href ? "text-accent" : "text-foreground",
+                  "border-b py-1.5 text-[0.78rem] tracking-[0.16em] uppercase transition-colors hover:text-accent",
+                  active === link.href ? "border-accent text-foreground" : "border-transparent text-foreground/80",
                 )}
               >
                 {link.label}
@@ -92,7 +92,7 @@ export function SiteHeader() {
           </nav>
 
           <div className="flex items-center gap-2">
-            <Button asChild variant="hero" size="xl" className="hidden sm:inline-flex">
+            <Button asChild variant="hero" size="lg" className="hidden h-11 sm:inline-flex">
               <a href="#contact">
                 Get Started <ArrowRight />
               </a>

@@ -25,6 +25,7 @@ export function SectionHeading({
       className={cn("max-w-2xl", align === "center" && "mx-auto text-center", className)}
     >
       <p className={cn("flex items-center gap-3", align === "center" && "justify-center")}>
+        <span className="h-px w-8 bg-accent" aria-hidden="true" />
         <span className="eyebrow">{eyebrow}</span>
         {index && (
           <span
@@ -39,7 +40,7 @@ export function SectionHeading({
       </p>
       <h2
         className={cn(
-          "mt-5 text-4xl leading-[1.08] font-medium text-balance md:text-5xl",
+          "mt-5 text-4xl leading-[1.05] font-medium text-balance md:text-6xl",
           inverted ? "text-primary-foreground" : "text-foreground",
         )}
       >

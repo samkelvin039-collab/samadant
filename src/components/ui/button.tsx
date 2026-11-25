@@ -5,7 +5,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium cursor-pointer transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-none text-sm font-medium cursor-pointer transition-all duration-300 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
   {
     variants: {
       variant: {
@@ -16,16 +16,16 @@ const buttonVariants = cva(
         secondary: "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
-        hero: "bg-primary text-primary-foreground rounded-sm shadow-soft hover:bg-primary-soft hover:shadow-lift",
-        gold: "bg-accent text-accent-foreground rounded-sm shadow-soft hover:brightness-105 hover:shadow-lift",
-        quiet: "text-foreground rounded-sm hover:text-accent",
-        outlineGold: "border border-accent/50 text-foreground rounded-sm bg-transparent hover:bg-accent hover:text-accent-foreground",
+        hero: "bg-primary text-primary-foreground uppercase tracking-[0.2em] text-xs hover:bg-primary-soft",
+        gold: "bg-accent text-accent-foreground uppercase tracking-[0.2em] text-xs hover:brightness-110",
+        quiet: "text-foreground uppercase tracking-[0.2em] text-xs hover:text-accent",
+        outlineGold: "border border-current/40 uppercase tracking-[0.2em] text-xs bg-transparent hover:bg-accent hover:text-accent-foreground",
       },
       size: {
         default: "h-9 px-4 py-2",
         sm: "h-8 rounded-md px-3 text-xs",
         lg: "h-10 rounded-md px-8",
-        xl: "h-12 px-6 text-sm",
+        xl: "h-12 px-8",
         icon: "h-9 w-9",
         xs: "h-6 rounded-sm px-2 text-xs",
         "icon-xs": "size-6 rounded-sm",

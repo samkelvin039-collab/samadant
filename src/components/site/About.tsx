@@ -40,7 +40,8 @@ export function About() {
 
         <div className="grid items-center gap-14 lg:grid-cols-2 lg:gap-20">
           <div data-reveal className="relative">
-            <div className="overflow-hidden rounded-md shadow-lift">
+            <div className="absolute top-5 -right-5 bottom-[-1.25rem] left-5 border border-accent" aria-hidden="true" />
+            <div className="relative overflow-hidden bg-card p-2 shadow-lift">
               <img
                 src={aboutStudio}
                 alt="An author's workspace with a navy hardcover book, open notebook, fountain pen and colour swatches"

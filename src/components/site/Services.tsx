@@ -64,7 +64,7 @@ export function Services() {
           </Button>
         </div>
 
-        <ul className="mt-16 grid gap-px overflow-hidden rounded-md border bg-border sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="mt-16 grid gap-px overflow-hidden border bg-border sm:grid-cols-2 lg:grid-cols-3">
           {SERVICES.map((service, i) => {
             const Icon = SERVICE_ICONS[service.id];
             return (
@@ -81,7 +81,7 @@ export function Services() {
                   <span className="grid size-12 place-items-center rounded-full border border-accent/30 text-accent transition-all duration-300 group-hover:bg-accent group-hover:text-accent-foreground">
                     <Icon className="size-5" aria-hidden="true" />
                   </span>
-                  <span className="font-display text-sm text-muted-foreground">
+                  <span className="font-display text-2xl text-accent">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                 </div>
@@ -93,7 +93,7 @@ export function Services() {
                   {service.tags.map((t) => (
                     <li
                       key={t}
-                      className="rounded-full bg-secondary px-3 py-1 text-xs text-secondary-foreground"
+                      className="border px-3 py-1 text-[0.65rem] tracking-[0.14em] text-muted-foreground uppercase"
                     >
                       {t}
                     </li>
