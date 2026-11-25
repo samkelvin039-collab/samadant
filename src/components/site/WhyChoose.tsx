@@ -1,3 +1,4 @@
+import { Link } from "@tanstack/react-router";
 import {
   BookMarked,
   HandHeart,
@@ -73,9 +74,9 @@ export function WhyChoose() {
             <p className="font-display text-2xl leading-snug italic">
               Have a book that deserves a closer look?
             </p>
-            <a href="#contact" className="link-underline mt-6 self-start text-sm font-semibold">
+            <Link to="/contact" className="link-underline mt-6 self-start text-sm font-semibold">
               Start a conversation →
-            </a>
+            </Link>
           </li>
         </ul>
       </div>

@@ -1,4 +1,5 @@
 import { ArrowDownRight, ArrowRight, BookOpen } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 
 import heroBooks from "@/assets/hero-books.jpg";
 import { Button } from "@/components/ui/button";
@@ -47,9 +48,9 @@ export function Hero() {
               style={{ animationDelay: "240ms" }}
             >
               <Button asChild variant="gold" size="xl">
-                <a href="#services">
+                <Link to="/services">
                   Explore Our Services <ArrowRight />
-                </a>
+                </Link>
               </Button>
               <Button
                 asChild
@@ -57,9 +58,9 @@ export function Hero() {
                 size="xl"
                 className="text-primary-foreground hover:border-accent"
               >
-                <a href="#contact">
+                <Link to="/contact">
                   Let&apos;s Promote Your Book <ArrowDownRight />
-                </a>
+                </Link>
               </Button>
             </div>
 

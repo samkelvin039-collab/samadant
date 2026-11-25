@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "@tanstack/react-router";
 import { ArrowUpRight, Play, Star } from "lucide-react";
 
 import conceptMockup from "@/assets/concept-mockup.jpg";
@@ -259,9 +260,9 @@ export function Portfolio() {
               ways a book can be presented on screen. They are not Samad client projects.
             </p>
             <Button asChild variant="hero" size="xl" className="mt-8">
-              <a href="#contact">
+              <Link to="/contact">
                 Discuss a trailer for your book <ArrowUpRight />
-              </a>
+              </Link>
             </Button>
           </div>
           <ul className="grid gap-4 sm:grid-cols-2">

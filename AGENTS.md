@@ -36,4 +36,4 @@ use the editor.
 - Chat history is one in-memory conversation per visit (no persistence); the server keeps only text parts, caps message length/history, and rate-limits per hashed visitor key.
 - Contact inquiries are validated with the shared zod schema in `src/lib/inquiry-schema.ts` and inserted by the `submitInquiry` server function with the admin client; the `inquiries` and `rate_limit_events` tables have RLS on and no public policies.
 - Rate limiting uses the `check_rate_limit` database function because workers are stateless.
-- The home page is one long page with in-page anchor sections, as the brief asked for smooth-scrolling navigation.
+- The site is six separate routes (/, /about, /services, /portfolio, /process, /contact) sharing header, footer and scroll-reveal from `__root.tsx`; section components are reused per page, as the brief asked for a multi-page site.

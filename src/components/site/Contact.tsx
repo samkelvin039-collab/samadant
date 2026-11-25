@@ -47,7 +47,7 @@ const fieldClass =
 export function Contact() {
   const send = useServerFn(submitInquiry);
   const preselected = useSelectedService();
-  const [values, setValues] = useState<InquiryInput>(EMPTY);
+  const [values, setValues] = useState<InquiryInput>(() => ({ ...EMPTY, service: preselected }));
   const [errors, setErrors] = useState<FieldErrors>({});
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [formError, setFormError] = useState("");
@@ -256,6 +256,8 @@ export function Contact() {
                   <Select
                     value={values.service}
                     onValueChange={(v) => {
+                      // Radix can emit an empty value while mounting; ignore it so a preselected service sticks.
+                      if (!v) return;
                       const next = { ...values, service: v };
                       setValues(next);
                       validateField("service", next);

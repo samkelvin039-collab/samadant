@@ -7,9 +7,6 @@ const listeners = new Set<() => void>();
 export function selectServiceForInquiry(service: string) {
   selectedService = service;
   listeners.forEach((l) => l());
-  if (typeof document !== "undefined") {
-    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth", block: "start" });
-  }
 }
 
 export function useSelectedService() {

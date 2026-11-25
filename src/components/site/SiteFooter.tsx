@@ -1,5 +1,7 @@
 import { Mail } from "lucide-react";
 
+import { Link } from "@tanstack/react-router";
+
 import { Logo } from "@/components/site/Logo";
 import { NAV_LINKS } from "@/components/site/SiteHeader";
 import { CONTACT_EMAIL, SERVICES } from "@/lib/site-content";
@@ -25,13 +27,13 @@ export function SiteFooter() {
           <p className="text-[0.65rem] tracking-[0.2em] text-gold-soft uppercase">Explore</p>
           <ul className="mt-5 space-y-3 text-sm">
             {NAV_LINKS.map((l) => (
-              <li key={l.href}>
-                <a
-                  href={l.href}
+              <li key={l.to}>
+                <Link
+                  to={l.to}
                   className="link-underline text-primary-foreground/80 hover:text-primary-foreground"
                 >
                   {l.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
@@ -41,9 +43,9 @@ export function SiteFooter() {
           <ul className="mt-5 grid gap-3 text-sm text-primary-foreground/80">
             {SERVICES.map((s) => (
               <li key={s.id}>
-                <a href="#services" className="link-underline hover:text-primary-foreground">
+                <Link to="/services" className="link-underline hover:text-primary-foreground">
                   {s.title}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>

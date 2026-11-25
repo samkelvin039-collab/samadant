@@ -1,4 +1,5 @@
 import { ArrowRight, Compass, MessagesSquare, PenTool } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 
 import aboutStudio from "@/assets/about-studio.jpg";
 import { Button } from "@/components/ui/button";
@@ -91,9 +92,9 @@ export function About() {
             </ul>
 
             <Button asChild variant="outlineGold" size="xl" className="mt-10">
-              <a href="#process">
+              <Link to="/process">
                 See how we work together <ArrowRight />
-              </a>
+              </Link>
             </Button>
           </div>
         </div>

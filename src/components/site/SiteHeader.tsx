@@ -1,44 +1,30 @@
 import { useEffect, useState } from "react";
 import { ArrowRight, Menu, X } from "lucide-react";
 
+import { Link } from "@tanstack/react-router";
+
 import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/site/Logo";
 import { cn } from "@/lib/utils";
 
 export const NAV_LINKS = [
-  { label: "Home", href: "#top" },
-  { label: "About", href: "#about" },
-  { label: "Services", href: "#services" },
-  { label: "Portfolio", href: "#portfolio" },
-  { label: "Contact", href: "#contact" },
-];
+  { label: "Home", to: "/" },
+  { label: "About", to: "/about" },
+  { label: "Services", to: "/services" },
+  { label: "Portfolio", to: "/portfolio" },
+  { label: "Our Process", to: "/process" },
+  { label: "Contact", to: "/contact" },
+] as const;
 
 export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const [active, setActive] = useState("#top");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  useEffect(() => {
-    const ids = NAV_LINKS.map((l) => l.href.slice(1));
-    const io = new IntersectionObserver(
-      (entries) => {
-        const visible = entries.filter((e) => e.isIntersecting);
-        if (visible[0]) setActive(`#${visible[0].target.id}`);
-      },
-      { rootMargin: "-45% 0px -50% 0px" },
-    );
-    ids.forEach((id) => {
-      const el = document.getElementById(id);
-      if (el) io.observe(el);
-    });
-    return () => io.disconnect();
   }, []);
 
   useEffect(() => {
@@ -71,31 +57,28 @@ export function SiteHeader() {
             scrolled ? "h-16" : "h-20",
           )}
         >
-          <a href="#top" aria-label="Samad home" onClick={() => setOpen(false)}>
+          <Link to="/" aria-label="Samad home" onClick={() => setOpen(false)}>
             <Logo />
-          </a>
+          </Link>
 
-          <nav aria-label="Main" className="hidden items-center gap-8 lg:flex">
+          <nav aria-label="Main" className="hidden items-center gap-6 lg:flex xl:gap-8">
             {NAV_LINKS.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                aria-current={active === link.href ? "true" : undefined}
-                className={cn(
-                  "border-b py-1.5 text-[0.78rem] tracking-[0.16em] uppercase transition-colors hover:text-accent",
-                  active === link.href ? "border-accent text-foreground" : "border-transparent text-foreground/80",
-                )}
+              <Link
+                key={link.to}
+                to={link.to}
+                activeOptions={{ exact: true }}
+                className="border-b border-transparent py-1.5 text-[0.78rem] tracking-[0.16em] whitespace-nowrap text-foreground/80 uppercase transition-colors hover:text-accent data-[status=active]:border-accent data-[status=active]:text-foreground"
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </nav>
 
           <div className="flex items-center gap-2">
             <Button asChild variant="hero" size="lg" className="hidden h-11 sm:inline-flex">
-              <a href="#contact">
+              <Link to="/contact">
                 Get Started <ArrowRight />
-              </a>
+              </Link>
             </Button>
             <Button
               variant="ghost"
@@ -122,9 +105,9 @@ export function SiteHeader() {
         )}
       >
         <div className="container-site flex h-20 items-center justify-between border-b">
-          <a href="#top" aria-label="Samad home" onClick={() => setOpen(false)}>
+          <Link to="/" aria-label="Samad home" onClick={() => setOpen(false)}>
             <Logo />
-          </a>
+          </Link>
           <Button
             variant="ghost"
             size="icon"
@@ -139,9 +122,10 @@ export function SiteHeader() {
           className="container-site flex flex-1 flex-col gap-1 overflow-y-auto pt-4 pb-10"
         >
           {NAV_LINKS.map((link, i) => (
-            <a
-              key={link.href}
-              href={link.href}
+            <Link
+              key={link.to}
+              to={link.to}
+              activeOptions={{ exact: true }}
               onClick={() => setOpen(false)}
               className={cn(
                 "flex items-baseline justify-between border-b py-5 font-display text-3xl text-foreground transition-all duration-500 hover:text-accent",
@@ -153,12 +137,12 @@ export function SiteHeader() {
               <span className="font-sans text-xs tracking-[0.2em] text-muted-foreground">
                 0{i + 1}
               </span>
-            </a>
+            </Link>
           ))}
           <Button asChild variant="hero" size="xl" className="mt-8 w-full">
-            <a href="#contact" onClick={() => setOpen(false)}>
+            <Link to="/contact" onClick={() => setOpen(false)}>
               Get Started <ArrowRight />
-            </a>
+            </Link>
           </Button>
         </nav>
       </div>

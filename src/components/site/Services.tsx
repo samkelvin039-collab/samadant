@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link, useNavigate } from "@tanstack/react-router";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -41,6 +42,7 @@ export const SERVICE_ICONS: Record<ServiceId, LucideIcon> = {
 };
 
 export function Services() {
+  const navigate = useNavigate();
   const [active, setActive] = useState<Service | null>(null);
 
   return (
@@ -58,9 +60,9 @@ export function Services() {
             intro="Explore each service to understand what the work involves and how it supports your book's presentation, discovery and reader connection."
           />
           <Button asChild variant="quiet" size="lg" className="self-start lg:self-auto">
-            <a href="#contact">
+            <Link to="/contact">
               Not sure which fits? Ask us <ArrowUpRight />
-            </a>
+            </Link>
           </Button>
         </div>
 
@@ -109,7 +111,10 @@ export function Services() {
                   </button>
                   <button
                     type="button"
-                    onClick={() => selectServiceForInquiry(service.title)}
+                    onClick={() => {
+                      selectServiceForInquiry(service.title);
+                      void navigate({ to: "/contact" });
+                    }}
                     className="link-underline text-sm text-muted-foreground hover:text-accent"
                   >
                     Get started
@@ -132,6 +137,7 @@ export function Services() {
 
 function ServiceDetail({ service, onClose }: { service: Service; onClose: () => void }) {
   const Icon = SERVICE_ICONS[service.id] ?? Clapperboard;
+  const navigate = useNavigate();
   return (
     <div>
       <div className="rounded-t-md bg-primary px-8 pt-8 pb-7 text-primary-foreground">
@@ -167,6 +173,7 @@ function ServiceDetail({ service, onClose }: { service: Service; onClose: () => 
             onClick={() => {
               onClose();
               selectServiceForInquiry(service.title);
+                    void navigate({ to: "/contact" });
             }}
           >
             Get Started <ArrowRight />

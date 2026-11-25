@@ -15,3 +15,10 @@ describe("App routing", () => {
     expect(matches.at(-1)?.routeId).not.toBe(rootRouteId);
   });
 });
+
+describe("Multi-page routes", () => {
+  it.each(["/about", "/services", "/portfolio", "/process", "/contact"])("%s has its own page", (path) => {
+    const router = createRouter({ routeTree, context: { queryClient: new QueryClient() } });
+    expect(router.matchRoutes(path).at(-1)?.routeId).toBe(path);
+  });
+});
